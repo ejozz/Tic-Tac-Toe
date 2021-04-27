@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Gridspace : MonoBehaviour
 {
-   public Button button;
-   public Text buttonText;
-   public string playerSide;
-   int randomNumber;
+   [SerializeField] private Button button;
+   [SerializeField] private Text buttonText;
+   [SerializeField] private string playerSide;
+   private int randomNumber;
 
    public void SetSpace()
    {
