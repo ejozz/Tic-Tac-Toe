@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 291638787}
   - component: {fileID: 291638786}
   m_Layer: 5
-  m_Name: Square
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 300313561}
   - component: {fileID: 300313560}
   m_Layer: 0
-  m_Name: Bar
+  m_Name: Bar1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 528615764}
   - component: {fileID: 528615763}
   m_Layer: 0
-  m_Name: Canvas
+  m_Name: GridSpaces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,7 @@ GameObject:
   - component: {fileID: 613789566}
   - component: {fileID: 613789565}
   m_Layer: 0
-  m_Name: GridSpace (1)
+  m_Name: GridSpace2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1023,7 +1023,7 @@ GameObject:
   - component: {fileID: 733249392}
   - component: {fileID: 733249391}
   m_Layer: 0
-  m_Name: GridSpace (2)
+  m_Name: GridSpace3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 1044788047}
   - component: {fileID: 1044788046}
   m_Layer: 0
-  m_Name: GridSpace (6)
+  m_Name: GridSpace7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1479,7 +1479,7 @@ GameObject:
   - component: {fileID: 1120462695}
   - component: {fileID: 1120462694}
   m_Layer: 0
-  m_Name: GridSpace (4)
+  m_Name: GridSpace5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1625,7 +1625,7 @@ GameObject:
   - component: {fileID: 1166181160}
   - component: {fileID: 1166181159}
   m_Layer: 0
-  m_Name: Bar (3)
+  m_Name: Bar4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1786,7 +1786,7 @@ GameObject:
   - component: {fileID: 1389180669}
   - component: {fileID: 1389180668}
   m_Layer: 0
-  m_Name: Bar (2)
+  m_Name: Bar3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1950,7 +1950,7 @@ GameObject:
   - component: {fileID: 1438811045}
   - component: {fileID: 1438811048}
   m_Layer: 0
-  m_Name: GridSpace
+  m_Name: GridSpace1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2099,7 +2099,7 @@ GameObject:
   - component: {fileID: 1454451548}
   - component: {fileID: 1454451547}
   m_Layer: 0
-  m_Name: GridSpace (8)
+  m_Name: GridSpace9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2248,7 +2248,7 @@ GameObject:
   - component: {fileID: 1478939030}
   - component: {fileID: 1478939029}
   m_Layer: 0
-  m_Name: GridSpace (5)
+  m_Name: GridSpace6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2394,7 +2394,7 @@ GameObject:
   - component: {fileID: 1538460565}
   - component: {fileID: 1538460564}
   m_Layer: 0
-  m_Name: Bar (1)
+  m_Name: Bar2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2479,7 +2479,7 @@ GameObject:
   - component: {fileID: 1851445632}
   - component: {fileID: 1851445631}
   m_Layer: 0
-  m_Name: GridSpace (3)
+  m_Name: GridSpace4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2628,7 +2628,7 @@ GameObject:
   - component: {fileID: 2063667821}
   - component: {fileID: 2063667820}
   m_Layer: 0
-  m_Name: GridSpace (7)
+  m_Name: GridSpace8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
