@@ -3,37 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Gridspace : MonoBehaviour
+namespace TicTacToe.Client.Runtime
 {
-   [SerializeField] private Button button;
-   [SerializeField] private Text buttonText;
-   [SerializeField] private string playerSide;
-   private int randomNumber;
+    public sealed class Gridspace : MonoBehaviour
+    {
+        [SerializeField] private Button m_button;
+        [SerializeField] private Text m_buttonText;
+        [SerializeField] private string m_playerSide;
+        private int m_randomNumber;
 
-   public void SetSpace()
-   {
-      if (buttonText.text.Equals("X"))
-      {
-         playerSide = "O";
-         buttonText.text = playerSide;
-      }
+        public void SetSpace()
+        {
+            if (m_buttonText.text.Equals("X"))
+            {
+                m_playerSide = "O";
+                m_buttonText.text = m_playerSide;
+            }
 
-      else if (buttonText.text.Equals("O"))
-      {
-         playerSide = "X";
-         buttonText.text = playerSide;
-      }
+            else if (m_buttonText.text.Equals("O"))
+            {
+                m_playerSide = "X";
+                m_buttonText.text = m_playerSide;
+            }
 
-      else
-      {
+            else
+            {
+                m_randomNumber = Random.Range(0, 2);
 
-         randomNumber = Random.Range(0, 2);
-         if (randomNumber < 1)
-            playerSide = "X";
-         else
-            playerSide = "O";
-         buttonText.text = playerSide;
+                if (m_randomNumber < 1)
+                {
+                    m_playerSide = "X";
+                    m_buttonText.text = m_playerSide;
+                }
+                
+                else
+                {
+                    m_playerSide = "O";
+                    m_buttonText.text = m_playerSide;
+                }
 
-      }
-   }
+            }
+        }
+    }
 }
