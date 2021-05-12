@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CellPresenter : MonoBehaviour
+namespace TicTacToe.Client.Runtime
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public sealed class CellPresenter : MonoBehaviour
     {
-        
+
+        [SerializeField] private Text m_text = default;
+
+        public void Show(CellModel model)
+        {
+            m_text.text = model.PlayerSide.ToString();
+        }
     }
 }
