@@ -23,7 +23,7 @@ namespace TicTacToe.Client.Runtime
 
     }
 
-    public sealed class CellPresenter : UnityEngine.MonoBehaviour
+    public sealed class CellPresenter : MonoBehaviour
     {
         [SerializeField] private Text m_text = default;
 

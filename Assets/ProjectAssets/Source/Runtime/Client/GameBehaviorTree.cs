@@ -11,13 +11,14 @@ namespace TicTacToe.Client.Runtime
            
             GridModel Grid = new GridModel();
 
-            CellPresenter CellPresenter = new CellPresenter();
-
             for(int i = 0; i<=2; i++)
             {
                 for(int j = 0; j<=2; j++)
                 {
-                    Grid.CellArray[i,j] = new CellModel(default);
+                    Grid.CellModelArray[i,j] = new CellModel(default);
+                    Grid.CellPresenterArray[i,j] = new CellPresenter();
+
+                    Grid.CellPresenterArray[i,j].Show(Grid.CellModelArray[i,j]);
                 }
             }
         

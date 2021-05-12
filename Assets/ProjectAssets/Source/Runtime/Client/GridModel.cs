@@ -8,8 +8,8 @@ namespace TicTacToe.Client.Runtime
     public sealed class GridModel
     {
         
-        public readonly CellModel[,] CellArray = new CellModel[3, 3];
-        
+        public CellModel[,] CellModelArray = new CellModel[3, 3];
+        public CellPresenter[,] CellPresenterArray = new CellPresenter[3, 3];
         
     }
 
