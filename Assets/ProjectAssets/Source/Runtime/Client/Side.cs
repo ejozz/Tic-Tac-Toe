@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Side : MonoBehaviour
+namespace TicTacToe.Client.Runtime
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public enum Side:byte
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        X,
+        O
     }
 }
