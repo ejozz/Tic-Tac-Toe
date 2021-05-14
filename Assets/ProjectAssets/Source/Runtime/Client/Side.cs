@@ -8,7 +8,8 @@ namespace TicTacToe.Client.Runtime
     
     public enum Side:byte
     {
-        X,
-        O
+        None = 0,
+        X = 1,
+        O = 2
     }
 }

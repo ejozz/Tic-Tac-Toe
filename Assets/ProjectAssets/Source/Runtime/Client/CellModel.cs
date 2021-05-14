@@ -9,7 +9,7 @@ namespace TicTacToe.Client.Runtime
     public sealed class CellModel
     {
 
-        public readonly Side PlayerSide = default;
+        public Side PlayerSide = default;
 
         public CellModel(Side side)
         {
