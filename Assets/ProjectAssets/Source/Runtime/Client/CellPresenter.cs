@@ -22,7 +22,7 @@ namespace TicTacToe.Client.Runtime
         {
             
             Debug.Log("Clicked on ("+m_xPosition + "," + m_yPosition + ")");
-            SetCell(m_gameBehaviorTree.gridModel.CellModelArray[m_xPosition,m_yPosition]);
+            SetCell(ref m_gameBehaviorTree.gridModel.CellModelArray[m_xPosition,m_yPosition]);
             Show(m_gameBehaviorTree.gridModel.CellModelArray[m_xPosition,m_yPosition]);
         }
 
@@ -34,20 +34,20 @@ namespace TicTacToe.Client.Runtime
         }
 
         //function to set cell model side
-        public void SetCell(CellModel model)
+        public void SetCell(ref CellModel model)
         {
 
             int m_randomNumber = Random.Range(0, 2);
             //if X, sets to O
             if (model.PlayerSide == Side.X)
             {
-                model.PlayerSide = Side.O;
+                model = new CellModel(Side.O);
             }
 
             //if O, sets to X
             else if (model.PlayerSide == Side.O)
             {
-                model.PlayerSide = Side.X;
+                model = new CellModel(Side.X);
             }
             
             //else sets X or O randomly
@@ -56,12 +56,12 @@ namespace TicTacToe.Client.Runtime
 
                 if (m_randomNumber == 1)
                 {
-                    model.PlayerSide = Side.X;
+                    model = new CellModel(Side.O);
                 }
                 
                 else
                 {
-                    model.PlayerSide = Side.O;
+                    model = new CellModel(Side.X);
                 }
 
             }
