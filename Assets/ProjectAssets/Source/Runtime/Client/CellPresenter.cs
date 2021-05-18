@@ -13,8 +13,10 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private Text m_text = default;
         [SerializeField] private int m_xPosition;
         [SerializeField] private int m_yPosition;
-        [SerializeField] private GameBehaviorTree m_gameBehaviorTree;
         
+
+        public delegate void EventHandler(CellPresenter sender);
+        public static event EventHandler OnClick;
 
 
         //Detects click and sets cell model and updates view
@@ -22,32 +24,37 @@ namespace TicTacToe.Client.Runtime
         {
             
             Debug.Log("Clicked on ("+m_xPosition + "," + m_yPosition + ")");
-            SetCell(ref m_gameBehaviorTree.gridModel.CellModelArray[m_xPosition,m_yPosition]);
-            Show(m_gameBehaviorTree.gridModel.CellModelArray[m_xPosition,m_yPosition]);
+            
+            if(OnClick != null)
+            {
+                OnClick.Invoke(this);
+            }
+           
         }
 
 
         //function sets text object to update view
-        public void Show(CellModel model)
+        public void Show(GridModel grid)
         {
-            m_text.text = model.PlayerSide.ToString();
+    
+            m_text.text = grid.CellModelArray[m_xPosition,m_yPosition].PlayerSide.ToString();
         }
 
         //function to set cell model side
-        public void SetCell(ref CellModel model)
+        public void SetCell(ref GridModel grid)
         {
 
             int m_randomNumber = Random.Range(0, 2);
             //if X, sets to O
-            if (model.PlayerSide == Side.X)
+            if (grid.CellModelArray[m_xPosition, m_yPosition].PlayerSide == Side.X)
             {
-                model = new CellModel(Side.O);
+                grid.CellModelArray[m_xPosition, m_yPosition] = new CellModel(Side.O);
             }
 
             //if O, sets to X
-            else if (model.PlayerSide == Side.O)
+            else if (grid.CellModelArray[m_xPosition, m_yPosition].PlayerSide == Side.O)
             {
-                model = new CellModel(Side.X);
+                grid.CellModelArray[m_xPosition, m_yPosition] = new CellModel(Side.X);
             }
             
             //else sets X or O randomly
@@ -56,12 +63,12 @@ namespace TicTacToe.Client.Runtime
 
                 if (m_randomNumber == 1)
                 {
-                    model = new CellModel(Side.O);
+                    grid.CellModelArray[m_xPosition, m_yPosition] = new CellModel(Side.O);
                 }
                 
                 else
                 {
-                    model = new CellModel(Side.X);
+                    grid.CellModelArray[m_xPosition, m_yPosition] = new CellModel(Side.X);
                 }
 
             }
