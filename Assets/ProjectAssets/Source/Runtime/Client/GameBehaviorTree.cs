@@ -13,11 +13,20 @@ namespace TicTacToe.Client.Runtime
 
         void OnEnable()
         {
-            CellPresenter.OnClick += delegate(CellPresenter presenter)
-            {
-                presenter.SetCell(ref gridModel);
-                presenter.Show(gridModel);
-            };
+            CellPresenter.OnClick += OnClickHandler;
+        
+        }
+        
+        void OnDisable()
+        {
+            CellPresenter.OnClick -= OnClickHandler;
+
+        }
+
+        public void OnClickHandler(CellPresenter presenter)
+        {
+            presenter.SetCell(ref gridModel);
+            presenter.Show(gridModel);
         }
 
         
