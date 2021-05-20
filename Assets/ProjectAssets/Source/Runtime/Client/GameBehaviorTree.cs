@@ -23,6 +23,7 @@ namespace TicTacToe.Client.Runtime
 
         }
 
+        //OnClick event
         public void OnClickHandler(CellPresenter presenter)
         {
             presenter.SetCell(ref gridModel);
