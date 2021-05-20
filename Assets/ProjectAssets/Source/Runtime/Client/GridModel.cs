@@ -8,6 +8,7 @@ namespace TicTacToe.Client.Runtime
     public sealed class GridModel
     {
 
+        
         public const int Size = 3;
         
         public CellModel[,] CellModelArray = new CellModel[Size, Size];
