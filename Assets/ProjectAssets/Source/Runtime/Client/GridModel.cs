@@ -7,17 +7,15 @@ namespace TicTacToe.Client.Runtime
 {    
     public sealed class GridModel
     {
-
-        public const int Size = 3;
         
-        public CellModel[,] CellModelArray = new CellModel[Size, Size];
+        public CellModel[,] CellModelArray = new CellModel[3, 3];
 
         //Constructor creates cellmodels for array
         public GridModel()
         {
-            for(int i = 0; i<Size; i++)
+            for(int i = 0; i<=2; i++)
             {
-                for(int j = 0; j<Size; j++)
+                for(int j = 0; j<=2; j++)
                 {
                     CellModelArray[i,j] = new CellModel(default);
                     

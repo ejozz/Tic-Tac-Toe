@@ -10,17 +10,6 @@ namespace TicTacToe.Client.Runtime
         
         public GridModel gridModel = new GridModel();
         
-
-        void OnEnable()
-        {
-            CellPresenter.OnClick += delegate(CellPresenter presenter)
-            {
-                presenter.SetCell(ref gridModel);
-                presenter.Show(gridModel);
-            };
-        }
-
-        
         
     }
 
