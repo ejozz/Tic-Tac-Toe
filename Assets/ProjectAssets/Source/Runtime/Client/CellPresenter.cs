@@ -19,7 +19,7 @@ namespace TicTacToe.Client.Runtime
         public static event EventHandler OnClick;
 
 
-        //Detects click and sets cell model and updates view
+        //Detects click and invokes event
         public void OnPointerClick(PointerEventData pointerEventData)
         {
             
