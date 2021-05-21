@@ -6,12 +6,12 @@ namespace TicTacToe.Client.Runtime
     {
         public GridModel gridModel = new GridModel();
 
-        void OnEnable()
+        private void OnEnable()
         {
             CellPresenter.OnClick += OnClickHandler;
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             CellPresenter.OnClick -= OnClickHandler;
         }
