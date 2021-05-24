@@ -14,7 +14,7 @@ namespace TicTacToe.Client.Runtime
         {
             foreach (CellPresenter presenter in m_presenters)
             {
-                var p = presenter.GetComponent<GridPosition>();
+                GridPosition p = presenter.GetComponent<GridPosition>();
                 m_grid.Add(p.Value, presenter);
             }
 
