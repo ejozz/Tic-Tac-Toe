@@ -5,10 +5,11 @@ namespace TicTacToe.Client.Runtime
 {
     public sealed class GameBehaviorTree : MonoBehaviour
     {
-        public GridModel gridModel = new GridModel();
         [SerializeField] private CellClickHandler[] m_handlers = default;
         [SerializeField] private CellPresenter[] m_presenters = default;
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
+        private WinHandler m_winHandler = new WinHandler();
+        private GridModel m_gridModel = new GridModel();
 
         private void Awake()
         {
@@ -40,7 +41,8 @@ namespace TicTacToe.Client.Runtime
         //On Presenter Clicked event
         private void OnPresenterClicked(Vector2Int p)
         {
-            m_grid[p].Show(new CellModel(GetRandomSide()));
+            m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
+            m_winHandler.CheckWin(m_gridModel);
         }
 
         //Test Function, Generates random side
