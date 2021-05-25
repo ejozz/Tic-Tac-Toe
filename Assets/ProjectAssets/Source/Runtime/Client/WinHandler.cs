@@ -9,7 +9,7 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
 
         //check win, 8 win cases per side, 3 horizontal, 3 vertical, 2 diagonal
-        public void CheckWin(GridModel grid)
+        public Vector2Int[] CheckWin(GridModel grid)
         {
             for(int i = 0; i<=1; i++)
             {
@@ -109,8 +109,10 @@ namespace TicTacToe.Client.Runtime
             //if win
             if(m_winningSide == Side.X || m_winningSide == Side.O)
             {
-                Debug.Log(m_winningSide + " wins");
+                return m_winningPositions;
             }
+
+            return null;
 
 
         }
