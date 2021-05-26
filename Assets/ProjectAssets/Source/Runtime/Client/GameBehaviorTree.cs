@@ -5,10 +5,13 @@ namespace TicTacToe.Client.Runtime
 {
     public sealed class GameBehaviorTree : MonoBehaviour
     {
-        public GridModel gridModel = new GridModel();
         [SerializeField] private CellClickHandler[] m_handlers = default;
         [SerializeField] private CellPresenter[] m_presenters = default;
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
+        private WinHandler m_winHandler = new WinHandler();
+        private GridModel m_gridModel = new GridModel();
+        private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
+        private Side m_winningSide = default;
 
         private void Awake()
         {
@@ -40,7 +43,14 @@ namespace TicTacToe.Client.Runtime
         //On Presenter Clicked event
         private void OnPresenterClicked(Vector2Int p)
         {
-            m_grid[p].Show(new CellModel(GetRandomSide()));
+            m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
+            m_winningPositions = m_winHandler.CheckWin(m_gridModel);
+            if(m_winningPositions!=null)
+            {
+                m_winningSide = m_gridModel.CellModelArray[p.x, p.y].PlayerSide;
+                Debug.Log(m_winningSide + " wins.");
+                Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
+            }
         }
 
         //Test Function, Generates random side
