@@ -12,10 +12,6 @@ namespace TicTacToe.Client.Runtime
         //function sets text object to update view
         public void Show(CellModel model)
         {
-            GetComponent<SpriteRenderer>().DOFade(0.55f,0.25f);
-            GetComponentInChildren<Text>().DOFade(0f, 0f);
-            GetComponentInChildren<Text>().DOFade(1.0f,0.25f);
-            
             m_text.text = model.PlayerSide.ToString();
         }
         
