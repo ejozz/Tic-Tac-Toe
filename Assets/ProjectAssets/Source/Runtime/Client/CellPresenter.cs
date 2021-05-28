@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening;
 
 namespace TicTacToe.Client.Runtime
 {
@@ -8,7 +7,6 @@ namespace TicTacToe.Client.Runtime
     {
         [SerializeField] private Text m_text = default;
         
-
         //function sets text object to update view
         public void Show(CellModel model)
         {
