@@ -7,9 +7,9 @@ namespace TicTacToe.Client.Runtime
     {
         [SerializeField] private CellClickHandler[] m_handlers = default;
         [SerializeField] private CellPresenter[] m_presenters = default;
-        [SerializeField] private CellAnimation[] m_animators = default;
+        [SerializeField] private SideAppearEffect[] m_animators = default;
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
-        private readonly Dictionary<Vector2Int, CellAnimation> m_animatorGrid = new Dictionary<Vector2Int, CellAnimation>();
+        private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
         private WinHandler m_winHandler = new WinHandler();
         private GridModel m_gridModel = new GridModel();
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
@@ -23,7 +23,7 @@ namespace TicTacToe.Client.Runtime
                 m_grid.Add(p.Value, presenter);
             }
 
-            foreach (CellAnimation animator in m_animators)
+            foreach (SideAppearEffect animator in m_animators)
             {
                 GridPosition p = animator.GetComponent<GridPosition>();
                 m_animatorGrid.Add(p.Value, animator);
@@ -52,7 +52,7 @@ namespace TicTacToe.Client.Runtime
         private void OnPresenterClicked(Vector2Int p)
         {
             m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
-            m_animatorGrid[p].StartAnimation();
+            m_animatorGrid[p].Play();
             m_winningPositions = m_winHandler.CheckWin(m_gridModel);
             if(m_winningPositions!=null)
             {

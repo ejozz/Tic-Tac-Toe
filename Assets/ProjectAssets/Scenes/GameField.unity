@@ -757,7 +757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &312932350
 GameObject:
@@ -926,7 +926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &373314909
 GameObject:
@@ -1326,7 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &549507179
 GameObject:
@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &647913205
 GameObject:
@@ -2364,7 +2364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &1335528776
 GameObject:
@@ -2533,7 +2533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &1382673662
 GameObject:
@@ -2884,7 +2884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &1468874088
 GameObject:
@@ -3314,7 +3314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &1778398923
 GameObject:
@@ -3741,7 +3741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_cellFadeIntensity: 0.5
   m_cellFadeDuration: 0.25
-  m_textFadeIntensity: 1
+  m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
 --- !u!1 &2065341484
 GameObject:
