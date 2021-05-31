@@ -1,7 +1,9 @@
 {
     "name": "TicTacToe.Client.Runtime",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:b6d9d09b76bdcf64ea285658ed3c8918"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
