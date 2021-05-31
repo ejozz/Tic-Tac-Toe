@@ -23,14 +23,22 @@ namespace TicTacToe.Client.Runtime
         
         public void Play()
         {
-            m_spriteTweener = m_cellSpriteRenderer.DOFade(m_cellFadeIntensity, m_cellFadeDuration);
-            m_textTweener = m_cellText.DOFade(m_textFadeIntensity, m_textFadeDuration).From();
+            if (!(m_spriteTweener != null && m_textTweener != null))
+            {
+                m_spriteTweener = m_cellSpriteRenderer.DOFade(m_cellFadeIntensity, m_cellFadeDuration);
+                m_textTweener = m_cellText.DOFade(m_textFadeIntensity, m_textFadeDuration).From();
+            }
         }
 
         public void Stop()
         {
-            m_spriteTweener.Kill();
-            m_textTweener.Kill();
+            if(m_spriteTweener != null && m_textTweener != null)
+            {
+                m_spriteTweener.Kill();
+                m_textTweener.Kill();
+            }
+            m_spriteTweener = null;
+            m_textTweener = null;   
         }
     }
 }
