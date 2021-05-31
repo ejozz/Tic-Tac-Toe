@@ -8,6 +8,7 @@ namespace TicTacToe.Client.Runtime
     {
         [SerializeField] private Color m_winColor = default;
         [SerializeField] private float m_winDuration = default;
+        private float m_colorAlpha = 1;
         private SpriteRenderer m_cellSpriteRenderer;
         private Tweener m_winTweener;
 
@@ -21,7 +22,7 @@ namespace TicTacToe.Client.Runtime
             if (!(m_winTweener != null))
             {
                 m_winTweener = DOTween.To(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, m_winColor, m_winDuration);
-                m_winTweener =DOTween.ToAlpha(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, 1, m_winDuration);
+                m_winTweener =DOTween.ToAlpha(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, m_colorAlpha, m_winDuration);
             }
         }
 
