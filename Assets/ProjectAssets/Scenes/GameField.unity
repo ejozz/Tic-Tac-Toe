@@ -605,6 +605,7 @@ GameObject:
   - component: {fileID: 311776427}
   - component: {fileID: 311776426}
   - component: {fileID: 311776428}
+  - component: {fileID: 311776429}
   m_Layer: 0
   m_Name: Cell7
   m_TagString: Untagged
@@ -759,6 +760,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &311776429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311776421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &312932350
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +789,7 @@ GameObject:
   - component: {fileID: 312932356}
   - component: {fileID: 312932355}
   - component: {fileID: 312932357}
+  - component: {fileID: 312932358}
   m_Layer: 0
   m_Name: Cell8
   m_TagString: Untagged
@@ -928,6 +944,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &312932358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 312932350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &373314909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1175,16 @@ MonoBehaviour:
   - {fileID: 311776428}
   - {fileID: 312932357}
   - {fileID: 2006517199}
+  m_winAnimators:
+  - {fileID: 463920141}
+  - {fileID: 583813438}
+  - {fileID: 1602775590}
+  - {fileID: 1406628207}
+  - {fileID: 1335528784}
+  - {fileID: 1312990545}
+  - {fileID: 311776429}
+  - {fileID: 312932358}
+  - {fileID: 2006517200}
 --- !u!4 &408422852
 Transform:
   m_ObjectHideFlags: 0
@@ -1174,6 +1214,7 @@ GameObject:
   - component: {fileID: 463920139}
   - component: {fileID: 463920138}
   - component: {fileID: 463920140}
+  - component: {fileID: 463920141}
   m_Layer: 0
   m_Name: Cell1
   m_TagString: Untagged
@@ -1328,6 +1369,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &463920141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463920133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22261998, g: 0.6698113, b: 0.20536669, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &549507179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1437,7 @@ GameObject:
   - component: {fileID: 583813436}
   - component: {fileID: 583813435}
   - component: {fileID: 583813437}
+  - component: {fileID: 583813438}
   m_Layer: 0
   m_Name: Cell2
   m_TagString: Untagged
@@ -1536,6 +1592,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &583813438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583813430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &647913205
 GameObject:
   m_ObjectHideFlags: 0
@@ -2212,6 +2282,7 @@ GameObject:
   - component: {fileID: 1312990543}
   - component: {fileID: 1312990542}
   - component: {fileID: 1312990544}
+  - component: {fileID: 1312990545}
   m_Layer: 0
   m_Name: Cell6
   m_TagString: Untagged
@@ -2366,6 +2437,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &1312990545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312990537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &1335528776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2466,7 @@ GameObject:
   - component: {fileID: 1335528782}
   - component: {fileID: 1335528781}
   - component: {fileID: 1335528783}
+  - component: {fileID: 1335528784}
   m_Layer: 0
   m_Name: Cell5
   m_TagString: Untagged
@@ -2535,6 +2621,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &1335528784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335528776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &1382673662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2832,7 @@ GameObject:
   - component: {fileID: 1406628205}
   - component: {fileID: 1406628204}
   - component: {fileID: 1406628206}
+  - component: {fileID: 1406628207}
   m_Layer: 0
   m_Name: Cell4
   m_TagString: Untagged
@@ -2886,6 +2987,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &1406628207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406628199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &1468874088
 GameObject:
   m_ObjectHideFlags: 0
@@ -3162,6 +3277,7 @@ GameObject:
   - component: {fileID: 1602775588}
   - component: {fileID: 1602775587}
   - component: {fileID: 1602775589}
+  - component: {fileID: 1602775590}
   m_Layer: 0
   m_Name: Cell3
   m_TagString: Untagged
@@ -3316,6 +3432,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &1602775590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602775582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &1778398923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,6 +3719,7 @@ GameObject:
   - component: {fileID: 2006517198}
   - component: {fileID: 2006517197}
   - component: {fileID: 2006517199}
+  - component: {fileID: 2006517200}
   m_Layer: 0
   m_Name: Cell9
   m_TagString: Untagged
@@ -3743,6 +3874,20 @@ MonoBehaviour:
   m_cellFadeDuration: 0.25
   m_textFadeIntensity: 0
   m_textFadeDuration: 0.25
+--- !u!114 &2006517200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006517192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff63f38345898394583ef5b5b2ca3e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_winColor: {r: 0.22352941, g: 0.67058825, b: 0.20392157, a: 0}
+  m_winDuration: 0.5
 --- !u!1 &2065341484
 GameObject:
   m_ObjectHideFlags: 0
