@@ -6,6 +6,7 @@ namespace TicTacToe.Client.Runtime
     {
         
         [SerializeField] private Vector2Int m_position = default;
+        
         public Vector2Int Value => m_position;
         
     }
