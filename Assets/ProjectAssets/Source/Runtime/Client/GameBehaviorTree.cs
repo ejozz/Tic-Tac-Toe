@@ -7,8 +7,8 @@ namespace TicTacToe.Client.Runtime
     {
         [SerializeField] private CellClickHandler[] m_handlers = default;
         [SerializeField] private CellPresenter[] m_presenters = default;
-        [SerializeField] private SideAppearEffect[] m_animators = default;
-        [SerializeField] private WinEffect[] m_winAnimators = default;
+        [SerializeField] private Effect[] m_animators = default;
+        [SerializeField] private Effect[] m_winAnimators = default;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();

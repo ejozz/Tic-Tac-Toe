@@ -17,12 +17,26 @@ namespace TicTacToe.Client.Runtime
             m_cellSpriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        public override void CreateSequence()
+        public override void Play()
         {
-            m_effectSequence = DOTween.Sequence();
-            m_effectSequence.Insert(0, DOTween.To(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, m_winColor, m_winDuration))
-                            .Insert(0, DOTween.ToAlpha(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, m_colorAlpha, m_winDuration));
+            if (!(m_effectSequence != null))
+            {
+                m_effectSequence = DOTween.Sequence();
+                m_effectSequence.Insert(0, DOTween.To(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, m_winColor, m_winDuration))
+                                .Insert(0, DOTween.ToAlpha(() => m_cellSpriteRenderer.color, x => m_cellSpriteRenderer.color = x, m_colorAlpha, m_winDuration));
+            }
         }
+
+        public override void Stop()
+        {
+            if (m_effectSequence != null)
+            {
+                m_effectSequence.Kill();
+            }
+            m_effectSequence = null;
+        }
+
+        
 
     }
 }

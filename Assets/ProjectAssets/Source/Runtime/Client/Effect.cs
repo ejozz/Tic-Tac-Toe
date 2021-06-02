@@ -7,25 +7,9 @@ namespace TicTacToe.Client.Runtime
     {        
         private Sequence m_effectSequence;
         
-        public abstract void CreateSequence();
+        public abstract void Play();
         
-        public void Play()
-        {
-            if (!(m_effectSequence != null))
-            {
-                CreateSequence();
-            }
-        }
-        
-        public void Stop()
-        {
-            if (m_effectSequence != null)
-            {
-                m_effectSequence.Kill();
-            }
-            m_effectSequence = null;
-        }
+        public abstract void Stop();
 
-        
     }
 }

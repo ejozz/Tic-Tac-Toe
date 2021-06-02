@@ -21,11 +21,24 @@ namespace TicTacToe.Client.Runtime
             m_cellText = GetComponentInChildren<Text>();;
         }
 
-        public override void CreateSequence()
+        public override void Play()
         {
-            m_effectSequence = DOTween.Sequence();
-            m_effectSequence.Insert(0, m_cellSpriteRenderer.DOFade(m_cellFadeIntensity, m_cellFadeDuration))
-                            .Insert(0, m_cellText.DOFade(m_textFadeIntensity, m_textFadeDuration).From());
+            if (!(m_effectSequence != null))
+            {
+                m_effectSequence = DOTween.Sequence();
+                m_effectSequence.Insert(0, m_cellSpriteRenderer.DOFade(m_cellFadeIntensity, m_cellFadeDuration))
+                                .Insert(0, m_cellText.DOFade(m_textFadeIntensity, m_textFadeDuration).From());
+            }
+        }
+
+
+        public override void Stop()
+        {
+            if (m_effectSequence != null)
+            {
+                m_effectSequence.Kill();
+            }
+            m_effectSequence = null;
         }
 
     }
