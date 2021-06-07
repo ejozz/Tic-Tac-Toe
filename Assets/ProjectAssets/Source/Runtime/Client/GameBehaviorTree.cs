@@ -60,8 +60,23 @@ namespace TicTacToe.Client.Runtime
         //On Presenter Clicked event
         private void OnPresenterClicked(Vector2Int p)
         {
-            m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
-            m_animatorGrid[p].Play();
+            //if Cell has not been clicked/side=none, sets randomly
+	    if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
+	    {
+		m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
+	    }
+	    //if x then O
+	    else if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.X)
+	    {
+		m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(Side.O));
+	    }
+	    //if o, then x
+	    else if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.O)
+	    {
+
+		m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(Side.X));
+	    }
+	    m_animatorGrid[p].Play();
             m_winningPositions = m_winHandler.CheckWin(m_gridModel);
             if(m_winningPositions!=null)
             {
