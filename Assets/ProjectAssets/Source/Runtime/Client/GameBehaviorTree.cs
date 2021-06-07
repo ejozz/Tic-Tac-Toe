@@ -77,8 +77,8 @@ namespace TicTacToe.Client.Runtime
                         m_winAnimatorGrid[position].Play();
                     }
 
-                    Debug.Log(m_winningSide + " wins.");
-                    Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
+                Debug.Log(m_winningSide + " wins.");
+                Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
             }
         }
