@@ -59,36 +59,27 @@ namespace TicTacToe.Client.Runtime
 
         //On Presenter Clicked event
         private void OnPresenterClicked(Vector2Int p)
-        {
-            //if Cell has not been clicked/side=none, sets randomly
-	    if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
-	    {
-		m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
-	    }
-	    //if x then O
-	    else if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.X)
-	    {
-		m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(Side.O));
-	    }
-	    //if o, then x
-	    else if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.O)
-	    {
-
-		m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(Side.X));
-	    }
-	    m_animatorGrid[p].Play();
-            m_winningPositions = m_winHandler.CheckWin(m_gridModel);
-            if(m_winningPositions!=null)
-            {
-                m_winningSide = m_gridModel.CellModelArray[p.x, p.y].PlayerSide;
-
-                foreach(Vector2Int position in m_winningPositions)
+        {     
+            //if Cell has not been clicked/side=none
+	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
+	        {
+		        //sets side randomly
+                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
+	            
+	            m_animatorGrid[p].Play();
+                m_winningPositions = m_winHandler.CheckWin(m_gridModel);
+                if(m_winningPositions!=null)
                 {
-                    m_winAnimatorGrid[position].Play();
-                }
+                    m_winningSide = m_gridModel.CellModelArray[p.x, p.y].PlayerSide;
 
-                Debug.Log(m_winningSide + " wins.");
-                Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
+                    foreach(Vector2Int position in m_winningPositions)
+                    {
+                        m_winAnimatorGrid[position].Play();
+                    }
+
+                    Debug.Log(m_winningSide + " wins.");
+                    Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
+                }
             }
         }
 
