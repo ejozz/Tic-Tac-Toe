@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 namespace TicTacToe.Client.Runtime
 {
@@ -9,6 +11,7 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private CellPresenter[] m_presenters = default;
         [SerializeField] private Effect[] m_animators = default;
         [SerializeField] private Effect[] m_winAnimators = default;
+        [SerializeField] private RestartClickHandler m_restartHandler = default;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
@@ -40,13 +43,14 @@ namespace TicTacToe.Client.Runtime
 
         }
 
-        //Subscribing to event
+        //Subscribing to events
         private void OnEnable()
         {
             foreach (CellClickHandler handler in m_handlers)
             {
                 handler.OnClicked += OnPresenterClicked;
             }
+            m_restartHandler.OnClicked += OnRestart;
         }
         //unsubbing
         private void OnDisable()
@@ -55,6 +59,7 @@ namespace TicTacToe.Client.Runtime
             {
                 handler.OnClicked -= OnPresenterClicked;
             }
+            m_restartHandler.OnClicked -= OnRestart;
         }
 
         //On Presenter Clicked event
@@ -81,6 +86,12 @@ namespace TicTacToe.Client.Runtime
                 Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
             }
+        }
+
+        //On Restart event
+        private void OnRestart()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         //Test Function, Generates random side
