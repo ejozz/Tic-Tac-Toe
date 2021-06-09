@@ -12,11 +12,5 @@ namespace TicTacToe.Client.Runtime
         {
             m_text.text = model.PlayerSide.ToString();
         }
-        
-        //reset cell
-        public void Reset()
-        {
-            m_text.text = "";
-        }
     }
 }
