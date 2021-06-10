@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
@@ -11,16 +12,18 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private CellPresenter[] m_presenters = default;
         [SerializeField] private Effect[] m_animators = default;
         [SerializeField] private Effect[] m_winAnimators = default;
-        [SerializeField] private RestartClickHandler m_restartHandler = default;
+        [SerializeField] private Button m_restartButton = default;
+        [SerializeField] private Effect m_restartEffect = default;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
         private readonly Dictionary<Vector2Int, WinEffect> m_winAnimatorGrid = new Dictionary<Vector2Int, WinEffect>();
-        
+        private int m_moveCount = 0; 
         private WinHandler m_winHandler = new WinHandler();
         private GridModel m_gridModel = new GridModel();
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
+        private RestartClickHandler m_restartHandler;
 
         private void Awake()
         {
@@ -40,7 +43,8 @@ namespace TicTacToe.Client.Runtime
                 GridPosition p = winAnimator.GetComponent<GridPosition>();
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
-
+            m_restartHandler = m_restartButton.GetComponent<RestartClickHandler>();
+            m_restartButton.gameObject.SetActive(false);
         }
 
         //Subscribing to events
@@ -70,7 +74,7 @@ namespace TicTacToe.Client.Runtime
 	        {
 		        //sets side randomly
                 m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
-	            
+	            m_moveCount++;
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
                 if(m_winningPositions!=null)
@@ -81,10 +85,18 @@ namespace TicTacToe.Client.Runtime
                     {
                         m_winAnimatorGrid[position].Play();
                     }
-
+                m_restartButton.gameObject.SetActive(true);
+                m_restartEffect.Play();
                 Debug.Log(m_winningSide + " wins.");
                 Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
+                if(m_moveCount == 9)
+                {
+                    Debug.Log("Board full.");
+                    m_restartButton.gameObject.SetActive(true);
+                    m_restartEffect.Play();
+                }
+
             }
         }
 
