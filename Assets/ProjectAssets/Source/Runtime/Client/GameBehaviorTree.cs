@@ -12,7 +12,7 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private Effect[] m_winAnimators = default;
         [SerializeField] private Effect m_restartEffect = default;
         [SerializeField] private RestartHandler m_restartHandler = default;
-        [SerializeField] private RestartClickHandler m_restartClickHandler;
+        [SerializeField] private RestartClickHandler m_restartClickHandler = default;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
