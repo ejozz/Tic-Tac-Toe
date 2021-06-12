@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using DG.Tweening;
-using UnityEngine.SceneManagement;
 
 namespace TicTacToe.Client.Runtime
 {
@@ -12,18 +10,18 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private CellPresenter[] m_presenters = default;
         [SerializeField] private Effect[] m_animators = default;
         [SerializeField] private Effect[] m_winAnimators = default;
-        [SerializeField] private GameObject m_restartButton = default;
         [SerializeField] private Effect m_restartEffect = default;
+        [SerializeField] private RestartHandler m_restartHandler = default;
+        [SerializeField] private RestartClickHandler m_restartClickHandler;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
         private readonly Dictionary<Vector2Int, WinEffect> m_winAnimatorGrid = new Dictionary<Vector2Int, WinEffect>();
-        private int m_moveCount = 0; 
         private WinHandler m_winHandler = new WinHandler();
         private GridModel m_gridModel = new GridModel();
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
-        private RestartClickHandler m_restartHandler;
+        
 
         private void Awake()
         {
@@ -43,8 +41,7 @@ namespace TicTacToe.Client.Runtime
                 GridPosition p = winAnimator.GetComponent<GridPosition>();
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
-            m_restartHandler = m_restartButton.GetComponent<RestartClickHandler>();
-            m_restartButton.gameObject.SetActive(false);
+            m_restartHandler.DisableButtton();
         }
 
         //Subscribing to events
@@ -54,7 +51,7 @@ namespace TicTacToe.Client.Runtime
             {
                 handler.OnClicked += OnPresenterClicked;
             }
-            m_restartHandler.OnClicked += OnRestart;
+            m_restartClickHandler.OnClicked += OnRestart;
         }
         //unsubbing
         private void OnDisable()
@@ -63,7 +60,7 @@ namespace TicTacToe.Client.Runtime
             {
                 handler.OnClicked -= OnPresenterClicked;
             }
-            m_restartHandler.OnClicked -= OnRestart;
+            m_restartClickHandler.OnClicked -= OnRestart;
         }
 
         //On Presenter Clicked event
@@ -74,7 +71,6 @@ namespace TicTacToe.Client.Runtime
 	        {
 		        //sets side randomly
                 m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
-	            m_moveCount++;
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
                 if(m_winningPositions!=null)
@@ -85,15 +81,15 @@ namespace TicTacToe.Client.Runtime
                     {
                         m_winAnimatorGrid[position].Play();
                     }
-                m_restartButton.gameObject.SetActive(true);
+                m_restartHandler.EnableButton();
                 m_restartEffect.Play();
                 Debug.Log(m_winningSide + " wins.");
                 Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
-                if(m_moveCount == 9)
+                else if(m_restartHandler.CheckFull(m_gridModel) == true)
                 {
                     Debug.Log("Board full.");
-                    m_restartButton.gameObject.SetActive(true);
+                    m_restartHandler.EnableButton();
                     m_restartEffect.Play();
                 }
 
@@ -103,7 +99,7 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            m_restartHandler.RestartScene();
         }
 
         //Test Function, Generates random side

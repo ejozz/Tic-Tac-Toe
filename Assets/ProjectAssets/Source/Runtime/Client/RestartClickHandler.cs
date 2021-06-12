@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System;
 
 namespace TicTacToe.Client.Runtime
@@ -10,11 +9,11 @@ namespace TicTacToe.Client.Runtime
         public event Action OnClicked = default;
         [SerializeField] private Button m_button;
 
-        void Start()
+        private void Start()
         {
             m_button.onClick.AddListener(TaskOnClick);
         }
-        void TaskOnClick()
+        private void TaskOnClick()
         {
             OnClicked();
         }

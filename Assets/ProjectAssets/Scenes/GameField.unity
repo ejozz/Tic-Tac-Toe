@@ -1261,6 +1261,7 @@ GameObject:
   - component: {fileID: 403176089}
   - component: {fileID: 403176088}
   - component: {fileID: 403176092}
+  - component: {fileID: 403176090}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1307,6 +1308,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &403176090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403176087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb509ed84cb46a5cb85b56ea1d8da975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_restartButton: {fileID: 403176087}
 --- !u!4 &403176091
 Transform:
   m_ObjectHideFlags: 0
@@ -1336,6 +1350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_intensity: 0
   m_duration: 1
+  m_text: {fileID: 1119399569}
+  m_image: {fileID: 165368898}
 --- !u!1 &408422850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1405,8 +1421,9 @@ MonoBehaviour:
   - {fileID: 311776429}
   - {fileID: 312932358}
   - {fileID: 2006517200}
-  m_restartButton: {fileID: 403176087}
   m_restartEffect: {fileID: 403176092}
+  m_restartHandler: {fileID: 403176090}
+  m_restartClickHandler: {fileID: 403176088}
 --- !u!4 &408422852
 Transform:
   m_ObjectHideFlags: 0

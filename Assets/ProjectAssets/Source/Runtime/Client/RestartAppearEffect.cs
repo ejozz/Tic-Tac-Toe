@@ -8,16 +8,10 @@ namespace TicTacToe.Client.Runtime
     {
         [SerializeField] private float m_intensity = default;
         [SerializeField] private float m_duration = default;
+        [SerializeField] private Text m_text;
+        [SerializeField] private Image m_image;
         
-        private Text m_text;
         private Sequence m_effectSequence;
-        private Image m_image;
-
-        private void Awake()
-        {
-            m_text = GetComponentInChildren<Text>();;
-            m_image = GetComponentInChildren<Image>();
-        }
 
         public override void Play()
         {
