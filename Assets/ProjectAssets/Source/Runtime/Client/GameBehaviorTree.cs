@@ -21,6 +21,7 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
+        private FullBoardHandler m_fullBoardHandler = new FullBoardHandler();
         
 
         private void Awake()
@@ -41,7 +42,7 @@ namespace TicTacToe.Client.Runtime
                 GridPosition p = winAnimator.GetComponent<GridPosition>();
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
-            m_restartPresenter.DisableButtton();
+            m_restartPresenter.Hide();
         }
 
         //Subscribing to events
@@ -73,6 +74,8 @@ namespace TicTacToe.Client.Runtime
                 m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
+
+                //if there is a winner
                 if(m_winningPositions!=null)
                 {
                     m_winningSide = m_gridModel.CellModelArray[p.x, p.y].PlayerSide;
@@ -81,15 +84,17 @@ namespace TicTacToe.Client.Runtime
                     {
                         m_winAnimatorGrid[position].Play();
                     }
-                m_restartPresenter.EnableButton();
+                m_restartPresenter.Show();
                 m_restartEffect.Play();
                 Debug.Log(m_winningSide + " wins.");
                 Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
-                else if(m_restartModel.CheckFull(m_gridModel) == true)
+
+                //elif board is full
+                else if(m_fullBoardHandler.CheckFull(m_gridModel) == true)
                 {
                     Debug.Log("Board full.");
-                    m_restartPresenter.EnableButton();
+                    m_restartPresenter.Show();
                     m_restartEffect.Play();
                 }
 
@@ -99,7 +104,7 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
-            m_restartModel.RestartScene();
+            m_restartModel.Restart();
         }
 
         //Test Function, Generates random side

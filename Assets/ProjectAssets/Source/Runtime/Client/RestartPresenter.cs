@@ -10,21 +10,30 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private Button m_button;
         [SerializeField] private GameObject m_restartButton = default;
 
+        //sub to onclick
         private void Start()
         {
             m_button.onClick.AddListener(TaskOnClick);
         }
+
+        //unsub
+        private void OnDestroy()
+        {
+            m_button.onClick.RemoveListener(TaskOnClick);
+        }
+
+        //on button event, trigger onclicked
         private void TaskOnClick()
         {
             OnClicked();
         }
 
-        public void EnableButton()
+        public void Show()
         {
             m_restartButton.gameObject.SetActive(true);
         }
 
-        public void DisableButtton()
+        public void Hide()
         {
             m_restartButton.gameObject.SetActive(false);
         }
