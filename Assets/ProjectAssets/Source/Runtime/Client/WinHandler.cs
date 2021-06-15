@@ -99,9 +99,9 @@ namespace TicTacToe.Client.Runtime
                 else if (grid.CellModelArray[2, 0].PlayerSide == m_currentSide && grid.CellModelArray[1, 1].PlayerSide == m_currentSide && grid.CellModelArray[0, 2].PlayerSide == m_currentSide)
                 {
                     m_winningSide = m_currentSide;
-                    m_winningPositions[0] = new Vector2Int(0, 0);
+                    m_winningPositions[0] = new Vector2Int(2, 0);
                     m_winningPositions[1] = new Vector2Int(1, 1);
-                    m_winningPositions[2] = new Vector2Int(2, 2);
+                    m_winningPositions[2] = new Vector2Int(0, 2);
 
                 }
             }

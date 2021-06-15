@@ -4,10 +4,11 @@ using System;
 
 namespace TicTacToe.Client.Runtime
 {
-    public sealed class RestartClickHandler : MonoBehaviour
+    public sealed class RestartPresenter : MonoBehaviour
     {
         public event Action OnClicked = default;
         [SerializeField] private Button m_button;
+        [SerializeField] private GameObject m_restartButton = default;
 
         private void Start()
         {
@@ -16,6 +17,16 @@ namespace TicTacToe.Client.Runtime
         private void TaskOnClick()
         {
             OnClicked();
+        }
+
+        public void EnableButton()
+        {
+            m_restartButton.gameObject.SetActive(true);
+        }
+
+        public void DisableButtton()
+        {
+            m_restartButton.gameObject.SetActive(false);
         }
     }
 }

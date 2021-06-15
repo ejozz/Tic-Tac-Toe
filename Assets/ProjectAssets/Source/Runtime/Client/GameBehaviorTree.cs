@@ -11,8 +11,7 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private Effect[] m_animators = default;
         [SerializeField] private Effect[] m_winAnimators = default;
         [SerializeField] private Effect m_restartEffect = default;
-        [SerializeField] private RestartHandler m_restartHandler = default;
-        [SerializeField] private RestartClickHandler m_restartClickHandler = default;
+        [SerializeField] private RestartPresenter m_restartPresenter = default;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
@@ -21,6 +20,7 @@ namespace TicTacToe.Client.Runtime
         private GridModel m_gridModel = new GridModel();
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
+        private RestartModel m_restartModel = new RestartModel();
         
 
         private void Awake()
@@ -41,7 +41,7 @@ namespace TicTacToe.Client.Runtime
                 GridPosition p = winAnimator.GetComponent<GridPosition>();
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
-            m_restartHandler.DisableButtton();
+            m_restartPresenter.DisableButtton();
         }
 
         //Subscribing to events
@@ -51,7 +51,7 @@ namespace TicTacToe.Client.Runtime
             {
                 handler.OnClicked += OnPresenterClicked;
             }
-            m_restartClickHandler.OnClicked += OnRestart;
+            m_restartPresenter.OnClicked += OnRestart;
         }
         //unsubbing
         private void OnDisable()
@@ -60,7 +60,7 @@ namespace TicTacToe.Client.Runtime
             {
                 handler.OnClicked -= OnPresenterClicked;
             }
-            m_restartClickHandler.OnClicked -= OnRestart;
+            m_restartPresenter.OnClicked -= OnRestart;
         }
 
         //On Presenter Clicked event
@@ -81,15 +81,15 @@ namespace TicTacToe.Client.Runtime
                     {
                         m_winAnimatorGrid[position].Play();
                     }
-                m_restartHandler.EnableButton();
+                m_restartPresenter.EnableButton();
                 m_restartEffect.Play();
                 Debug.Log(m_winningSide + " wins.");
                 Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
-                else if(m_restartHandler.CheckFull(m_gridModel) == true)
+                else if(m_restartModel.CheckFull(m_gridModel) == true)
                 {
                     Debug.Log("Board full.");
-                    m_restartHandler.EnableButton();
+                    m_restartPresenter.EnableButton();
                     m_restartEffect.Play();
                 }
 
@@ -99,7 +99,7 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
-            m_restartHandler.RestartScene();
+            m_restartModel.RestartScene();
         }
 
         //Test Function, Generates random side
