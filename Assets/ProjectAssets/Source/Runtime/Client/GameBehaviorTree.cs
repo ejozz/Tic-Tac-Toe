@@ -12,6 +12,8 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private Effect[] m_winAnimators = default;
         [SerializeField] private Effect m_restartEffect = default;
         [SerializeField] private RestartPresenter m_restartPresenter = default;
+        [SerializeField] private ScorePresenter m_xScorePresenter = default;
+        [SerializeField] private ScorePresenter m_oScorePresenter = default;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
@@ -21,6 +23,8 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
+        private ScoreModel m_scoreModel = new ScoreModel();
+        private AlternateSides m_alternateSideHandler = new AlternateSides();
 
         private void Awake()
         {
@@ -41,6 +45,9 @@ namespace TicTacToe.Client.Runtime
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
             m_restartPresenter.Hide();
+            m_xScorePresenter.Show(m_scoreModel.GetX());
+            m_oScorePresenter.Show(m_scoreModel.GetO());
+            
         }
 
         //Subscribing to events
@@ -70,7 +77,7 @@ namespace TicTacToe.Client.Runtime
 	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
 	        {
 		        //sets side randomly
-                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(GetRandomSide()));
+                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_alternateSideHandler.GetSide()));
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
 
@@ -85,6 +92,16 @@ namespace TicTacToe.Client.Runtime
                     }
                 m_restartPresenter.Show();
                 m_restartEffect.Play();
+
+                if(m_winningSide == Side.X)
+                {
+                    m_xScorePresenter.Show(m_scoreModel.XWin());
+                }
+                else
+                {
+                    m_oScorePresenter.Show(m_scoreModel.OWin());
+                }
+
                 Debug.Log(m_winningSide + " wins.");
                 Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
