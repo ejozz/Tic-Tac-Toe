@@ -12,6 +12,5 @@ namespace TicTacToe.Client.Runtime
         {
             m_text.text = model.PlayerSide.ToString();
         }
-        
     }
 }
