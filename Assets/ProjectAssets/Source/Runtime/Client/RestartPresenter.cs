@@ -19,7 +19,10 @@ namespace TicTacToe.Client.Runtime
         //unsub
         private void OnDestroy()
         {
-            m_button.onClick.RemoveListener(TaskOnClick);
+            if(m_button != null)
+            {
+                m_button.onClick.RemoveListener(TaskOnClick);
+            }
         }
 
         //on button event, trigger onclicked
@@ -30,12 +33,12 @@ namespace TicTacToe.Client.Runtime
 
         public void Show()
         {
-            m_restartButton.gameObject.SetActive(true);
+            m_restartButton.SetActive(true);
         }
 
         public void Hide()
         {
-            m_restartButton.gameObject.SetActive(false);
+            m_restartButton.SetActive(false);
         }
     }
 }

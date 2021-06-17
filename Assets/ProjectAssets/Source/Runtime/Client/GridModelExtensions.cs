@@ -4,13 +4,11 @@ using UnityEngine;
 
 namespace TicTacToe.Client.Runtime
 {
-    public class FullBoardHandler
+    public static class GridModelExtensions
     {
-        private bool m_isFull;
-        
-        public bool CheckFull(GridModel grid)
+        public static bool IsFull(this GridModel grid)
         {
-            m_isFull = true;
+            bool m_isFull = true;
             for(int j = 0; j<GridModel.Size; j++)
             {
                 for(int k = 0; k<GridModel.Size; k++)

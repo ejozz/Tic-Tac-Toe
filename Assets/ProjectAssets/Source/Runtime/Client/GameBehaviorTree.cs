@@ -21,8 +21,6 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
-        private FullBoardHandler m_fullBoardHandler = new FullBoardHandler();
-        
 
         private void Awake()
         {
@@ -54,6 +52,7 @@ namespace TicTacToe.Client.Runtime
             }
             m_restartPresenter.OnClicked += OnRestart;
         }
+
         //unsubbing
         private void OnDisable()
         {
@@ -91,7 +90,7 @@ namespace TicTacToe.Client.Runtime
                 }
 
                 //elif board is full
-                else if(m_fullBoardHandler.CheckFull(m_gridModel) == true)
+                else if(m_gridModel.IsFull() == true)
                 {
                     Debug.Log("Board full.");
                     m_restartPresenter.Show();
