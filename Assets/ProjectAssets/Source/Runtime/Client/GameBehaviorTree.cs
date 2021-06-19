@@ -23,8 +23,9 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
-        private ScoreModel m_scoreModel = new ScoreModel();
-        private AlternateSides m_alternateSideHandler = new AlternateSides();
+        private PlayerModel m_xPlayer = new PlayerModel(Side.X, ScoreModel.Instance.GetX());
+        private PlayerModel m_oPlayer = new PlayerModel(Side.O, ScoreModel.Instance.GetO());
+        private PlayerModel m_activePlayer;
 
         private void Awake()
         {
@@ -45,8 +46,9 @@ namespace TicTacToe.Client.Runtime
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
             m_restartPresenter.Hide();
-            m_xScorePresenter.Show(m_scoreModel.GetX());
-            m_oScorePresenter.Show(m_scoreModel.GetO());
+            m_xScorePresenter.Show(ScoreModel.Instance.GetX());
+            m_oScorePresenter.Show(ScoreModel.Instance.GetO());
+            m_activePlayer = m_xPlayer;
             
         }
 
@@ -77,7 +79,7 @@ namespace TicTacToe.Client.Runtime
 	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
 	        {
 		        //sets side randomly
-                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_alternateSideHandler.GetSide()));
+                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.GetSide()));
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
 
@@ -90,20 +92,20 @@ namespace TicTacToe.Client.Runtime
                     {
                         m_winAnimatorGrid[position].Play();
                     }
-                m_restartPresenter.Show();
-                m_restartEffect.Play();
+                    m_restartPresenter.Show();
+                    m_restartEffect.Play();
 
-                if(m_winningSide == Side.X)
-                {
-                    m_xScorePresenter.Show(m_scoreModel.XWin());
-                }
-                else
-                {
-                    m_oScorePresenter.Show(m_scoreModel.OWin());
-                }
+                    if(m_winningSide == Side.X)
+                    {
+                        m_xScorePresenter.Show(m_xPlayer.Win());
+                    }
+                    else
+                    {
+                        m_oScorePresenter.Show(m_oPlayer.Win());
+                    }
 
-                Debug.Log(m_winningSide + " wins.");
-                Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
+                    Debug.Log(m_winningSide + " wins.");
+                    Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
                 }
 
                 //elif board is full
@@ -114,30 +116,24 @@ namespace TicTacToe.Client.Runtime
                     m_restartEffect.Play();
                 }
 
+                //switch active player
+                if(m_activePlayer == m_xPlayer)
+                {
+                    m_activePlayer = m_oPlayer;
+                }
+                else
+                {
+                    m_activePlayer = m_xPlayer;
+                }
             }
         }
 
         //On Restart event
         private void OnRestart()
         {
+            ScoreModel.Instance.SetX(m_xPlayer.GetScore());
+            ScoreModel.Instance.SetO(m_oPlayer.GetScore());
             m_restartModel.Restart();
-        }
-
-        //Test Function, Generates random side
-        private Side GetRandomSide()
-        {
-            int m_randomNumber = Random.Range(0, 2);
-
-            if (m_randomNumber == 1)
-            {
-                return Side.X;
-            }
-
-            else
-            {
-                return Side.O;
-            }
-            
         }
     }
 }

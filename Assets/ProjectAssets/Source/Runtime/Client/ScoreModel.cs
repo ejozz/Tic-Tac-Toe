@@ -4,9 +4,23 @@ namespace TicTacToe.Client.Runtime
 {
     public sealed class ScoreModel
     {
-        private static int m_xScore = 0;
-        private static int m_oScore = 0;
+        private int m_xScore = 0;
+        private int m_oScore = 0;
+       
+        private static ScoreModel m_instance;
         
+        public static ScoreModel Instance
+        {
+            get
+            {
+                if(m_instance == null)
+                {
+                    m_instance = new ScoreModel();
+                }
+                return m_instance;
+            }
+        }
+
         public int GetX()
         {
             return m_xScore;
@@ -17,16 +31,14 @@ namespace TicTacToe.Client.Runtime
             return m_oScore;
         }
 
-        public int XWin()
+        public void SetX(int score)
         {
-            m_xScore++;
-            return m_xScore;
+            m_xScore = score;
         }
 
-        public int OWin()
+        public void SetO(int score)
         {
-            m_oScore++;
-            return m_oScore;
+            m_oScore = score;
         }
     }
 }
