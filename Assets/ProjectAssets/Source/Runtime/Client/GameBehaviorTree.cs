@@ -23,8 +23,8 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
-        private PlayerModel m_xPlayer = new PlayerModel(Side.X, ScoreModel.Instance.GetX());
-        private PlayerModel m_oPlayer = new PlayerModel(Side.O, ScoreModel.Instance.GetO());
+        private PlayerModel m_xPlayer = PlayerModel.GetXPlayer;
+        private PlayerModel m_oPlayer = PlayerModel.GetOPlayer;
         private PlayerModel m_activePlayer;
 
         private void Awake()
@@ -46,8 +46,8 @@ namespace TicTacToe.Client.Runtime
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
             m_restartPresenter.Hide();
-            m_xScorePresenter.Show(ScoreModel.Instance.GetX());
-            m_oScorePresenter.Show(ScoreModel.Instance.GetO());
+            m_xScorePresenter.Show(m_xPlayer.m_score);
+            m_oScorePresenter.Show(m_oPlayer.m_score);
             m_activePlayer = m_xPlayer;
             
         }
@@ -79,7 +79,7 @@ namespace TicTacToe.Client.Runtime
 	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
 	        {
 		        //sets side randomly
-                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.GetSide()));
+                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.m_side));
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
 
@@ -131,8 +131,6 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
-            ScoreModel.Instance.SetX(m_xPlayer.GetScore());
-            ScoreModel.Instance.SetO(m_oPlayer.GetScore());
             m_restartModel.Restart();
         }
     }
