@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using Zenject;
 
@@ -16,6 +15,9 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private ScorePresenter m_xScorePresenter = default;
         [SerializeField] private ScorePresenter m_oScorePresenter = default;
 
+        [Inject(Id = "xPlayer")] private PlayerModel m_xPlayer;
+        [Inject(Id = "oPlayer")] private PlayerModel m_oPlayer;
+
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
         private readonly Dictionary<Vector2Int, WinEffect> m_winAnimatorGrid = new Dictionary<Vector2Int, WinEffect>();
@@ -24,13 +26,8 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
-        //private PlayerModel m_xPlayer = PlayerModel.GetXPlayer;
-        //private PlayerModel m_oPlayer = PlayerModel.GetOPlayer;
         private PlayerModel m_activePlayer;
-
-        [Inject(Id = "xPlayer")] private PlayerModel m_xPlayer;
-        [Inject(Id = "oPlayer")] private PlayerModel m_oPlayer;
-
+        
         private void Awake()
         {
             foreach (CellPresenter presenter in m_presenters)
@@ -53,7 +50,6 @@ namespace TicTacToe.Client.Runtime
             m_xScorePresenter.Show(m_xPlayer.m_score);
             m_oScorePresenter.Show(m_oPlayer.m_score);
             m_activePlayer = m_xPlayer;
-            
         }
 
         //Subscribing to events

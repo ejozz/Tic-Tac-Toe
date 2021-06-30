@@ -1,8 +1,8 @@
 using Zenject;
 
 namespace TicTacToe.Client.Runtime
-{
-    public class PlayerModelInstaller : MonoInstaller<PlayerModelInstaller>
+{    
+    public class PlayerModelInstaller : MonoInstaller
     {
         public override void InstallBindings()
         {
@@ -10,4 +10,4 @@ namespace TicTacToe.Client.Runtime
             Container.Bind<PlayerModel>().WithId("oPlayer").FromInstance(new PlayerModel(Side.O , 0)).NonLazy();
         }
     }
-}   
+}
