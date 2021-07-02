@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using Zenject;
 
 namespace TicTacToe.Client.Runtime
 {
@@ -15,6 +15,9 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private ScorePresenter m_xScorePresenter = default;
         [SerializeField] private ScorePresenter m_oScorePresenter = default;
 
+        [Inject(Id = PlayerID.XPlayer)] private PlayerModel m_xPlayer;
+        [Inject(Id = PlayerID.OPlayer)] private PlayerModel m_oPlayer;
+
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
         private readonly Dictionary<Vector2Int, WinEffect> m_winAnimatorGrid = new Dictionary<Vector2Int, WinEffect>();
@@ -23,10 +26,8 @@ namespace TicTacToe.Client.Runtime
         private Vector2Int[] m_winningPositions = new Vector2Int[GridModel.Size];
         private Side m_winningSide = default;
         private RestartModel m_restartModel = new RestartModel();
-        private PlayerModel m_xPlayer = PlayerModel.GetXPlayer;
-        private PlayerModel m_oPlayer = PlayerModel.GetOPlayer;
         private PlayerModel m_activePlayer;
-
+        
         private void Awake()
         {
             foreach (CellPresenter presenter in m_presenters)
@@ -46,10 +47,9 @@ namespace TicTacToe.Client.Runtime
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
             m_restartPresenter.Hide();
-            m_xScorePresenter.Show(m_xPlayer.m_score);
-            m_oScorePresenter.Show(m_oPlayer.m_score);
+            m_xScorePresenter.Show(m_xPlayer.Score);
+            m_oScorePresenter.Show(m_oPlayer.Score);
             m_activePlayer = m_xPlayer;
-            
         }
 
         //Subscribing to events
@@ -79,7 +79,7 @@ namespace TicTacToe.Client.Runtime
 	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
 	        {
 		        //sets side randomly
-                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.m_side));
+                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.Side));
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
 
