@@ -76,7 +76,7 @@ namespace TicTacToe.Client.Runtime
         private void OnPresenterClicked(Vector2Int p)
         {     
             //if Cell has not been clicked/side=none
-	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
+	        if((m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None) && (m_winningSide == Side.None))
 	        {
 		        //sets side randomly
                 m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.Side));
