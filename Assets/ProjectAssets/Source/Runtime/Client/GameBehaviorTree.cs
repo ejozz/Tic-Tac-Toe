@@ -15,8 +15,8 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private ScorePresenter m_xScorePresenter = default;
         [SerializeField] private ScorePresenter m_oScorePresenter = default;
 
-        [Inject(Id = "xPlayer")] private PlayerModel m_xPlayer;
-        [Inject(Id = "oPlayer")] private PlayerModel m_oPlayer;
+        [Inject(Id = PlayerID.XPlayer)] private PlayerModel m_xPlayer;
+        [Inject(Id = PlayerID.OPlayer)] private PlayerModel m_oPlayer;
 
         private readonly Dictionary<Vector2Int, CellPresenter> m_grid = new Dictionary<Vector2Int, CellPresenter>();
         private readonly Dictionary<Vector2Int, SideAppearEffect> m_animatorGrid = new Dictionary<Vector2Int, SideAppearEffect>();
@@ -47,8 +47,8 @@ namespace TicTacToe.Client.Runtime
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
             m_restartPresenter.Hide();
-            m_xScorePresenter.Show(m_xPlayer.m_score);
-            m_oScorePresenter.Show(m_oPlayer.m_score);
+            m_xScorePresenter.Show(m_xPlayer.Score);
+            m_oScorePresenter.Show(m_oPlayer.Score);
             m_activePlayer = m_xPlayer;
         }
 
@@ -79,7 +79,7 @@ namespace TicTacToe.Client.Runtime
 	        if(m_gridModel.CellModelArray[p.x,p.y].PlayerSide == Side.None)
 	        {
 		        //sets side randomly
-                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.m_side));
+                m_grid[p].Show(m_gridModel.CellModelArray[p.x,p.y] = new CellModel(m_activePlayer.Side));
 	            m_animatorGrid[p].Play();
                 m_winningPositions = m_winHandler.CheckWin(m_gridModel);
 
