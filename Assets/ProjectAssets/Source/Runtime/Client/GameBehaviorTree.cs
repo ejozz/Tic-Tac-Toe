@@ -14,6 +14,8 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private RestartPresenter m_restartPresenter = default;
         [SerializeField] private ScorePresenter m_xScorePresenter = default;
         [SerializeField] private ScorePresenter m_oScorePresenter = default;
+        [SerializeField] private WinPopupPresenter m_winPopupPresenter = default;
+        [SerializeField] private WinPopupEffect m_winPopupEffect = default;
 
         [Inject(Id = PlayerID.XPlayer)] private PlayerModel m_xPlayer;
         [Inject(Id = PlayerID.OPlayer)] private PlayerModel m_oPlayer;
@@ -47,6 +49,7 @@ namespace TicTacToe.Client.Runtime
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
             m_restartPresenter.Hide();
+            m_winPopupPresenter.Hide();
             m_xScorePresenter.Show(m_xPlayer.Score);
             m_oScorePresenter.Show(m_oPlayer.Score);
             m_activePlayer = m_xPlayer;
@@ -92,17 +95,21 @@ namespace TicTacToe.Client.Runtime
                     {
                         m_winAnimatorGrid[position].Play();
                     }
-                    m_restartPresenter.Show();
-                    m_restartEffect.Play();
 
                     if(m_winningSide == Side.X)
                     {
                         m_xScorePresenter.Show(m_xPlayer.Win());
+                        m_winPopupPresenter.Show(new WinPopupModel(Side.X));
                     }
                     else
                     {
                         m_oScorePresenter.Show(m_oPlayer.Win());
+                        m_winPopupPresenter.Show(new WinPopupModel(Side.O));
                     }
+                    
+                    m_winPopupEffect.Play();
+                    m_restartPresenter.Show();
+                    m_restartEffect.Play();
 
                     Debug.Log(m_winningSide + " wins.");
                     Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
@@ -112,6 +119,8 @@ namespace TicTacToe.Client.Runtime
                 else if(m_gridModel.IsFull() == true)
                 {
                     Debug.Log("Board full.");
+                    m_winPopupPresenter.Show(new WinPopupModel(Side.None));
+                    m_winPopupEffect.Play();
                     m_restartPresenter.Show();
                     m_restartEffect.Play();
                 }
