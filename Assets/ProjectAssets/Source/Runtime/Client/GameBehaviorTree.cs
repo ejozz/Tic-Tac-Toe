@@ -151,6 +151,7 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
+            SceneManager.UnloadSceneAsync("WinPopup");
             m_restartModel.Restart();
         }
     }

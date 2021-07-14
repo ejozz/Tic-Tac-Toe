@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/ProjectAssets/Scenes/GameField.unity
+    guid: 0eaeb53c2d9390348991c3a79fc6d88f
+  - enabled: 1
+    path: Assets/ProjectAssets/Scenes/WinPopup.unity
+    guid: 9e6783de6902e394998b627590b8e72c
   m_configObjects: {}
