@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1dd358f339327bd46a8572b4c437571a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_winPopupPresenter: {instanceID: 0}
+  - m_winPopupEffect: {instanceID: 0}
+  - m_restartPresenter: {instanceID: 0}
+  - m_restartAppearEffect: {instanceID: 0}
+  - m_popup: {fileID: 1556195897600159296, guid: 974e23ae67cf2434faceb191d174d01a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
