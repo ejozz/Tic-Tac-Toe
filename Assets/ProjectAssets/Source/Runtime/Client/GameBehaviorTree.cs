@@ -14,12 +14,15 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private ScorePresenter m_xScorePresenter = default;
         [SerializeField] private ScorePresenter m_oScorePresenter = default;
         
-        private WinPopupPresenter m_winPopupPresenter;
-        private WinPopupEffect m_winPopupEffect;
-        private RestartAppearEffect m_restartEffect;
-        private RestartPresenter m_restartPresenter;
+       // private WinPopupPresenter m_winPopupPresenter;
+       // private WinPopupEffect m_winPopupEffect;
+       // private RestartAppearEffect m_restartEffect;
+       // private RestartPresenter m_restartPresenter;
 
-        [Inject] GameObject m_winPopup;
+        [Inject] private RestartPresenter m_restartPresenter;
+        [Inject] private RestartAppearEffect m_restartAppearEffect;
+        [Inject] private WinPopupPresenter m_winPopupPresenter;
+        [Inject] private WinPopupEffect m_winPopupEffect;
 
         [Inject(Id = PlayerID.XPlayer)] private PlayerModel m_xPlayer;
         [Inject(Id = PlayerID.OPlayer)] private PlayerModel m_oPlayer;
@@ -52,10 +55,10 @@ namespace TicTacToe.Client.Runtime
                 GridPosition p = winAnimator.GetComponent<GridPosition>();
                 m_winAnimatorGrid.Add(p.Value, winAnimator);
             }
-            m_winPopupPresenter = m_winPopup.GetComponentInChildren<WinPopupPresenter>();
-            m_winPopupEffect = m_winPopup.GetComponentInChildren<WinPopupEffect>();
-            m_restartEffect= m_winPopup.GetComponentInChildren<RestartAppearEffect>();
-            m_restartPresenter = m_winPopup.GetComponentInChildren<RestartPresenter>();
+           // m_winPopupPresenter = m_winPopup.GetComponentInChildren<WinPopupPresenter>();
+           // m_winPopupEffect = m_winPopup.GetComponentInChildren<WinPopupEffect>();
+           // m_restartEffect= m_winPopup.GetComponentInChildren<RestartAppearEffect>();
+           // m_restartPresenter = m_winPopup.GetComponentInChildren<RestartPresenter>();
             m_restartPresenter.Hide();
             m_winPopupPresenter.Hide();
             m_xScorePresenter.Show(m_xPlayer.Score);
@@ -104,7 +107,7 @@ namespace TicTacToe.Client.Runtime
                         m_winAnimatorGrid[position].Play();
                     }
 
-                    SceneManager.LoadScene("WinPopup", LoadSceneMode.Additive);
+                    //SceneManager.LoadScene("WinPopup", LoadSceneMode.Additive);
 
                     if(m_winningSide == Side.X)
                     {
@@ -119,7 +122,7 @@ namespace TicTacToe.Client.Runtime
                     
                     m_winPopupEffect.Play();
                     m_restartPresenter.Show();
-                    m_restartEffect.Play();
+                    m_restartAppearEffect.Play();
 
                     Debug.Log(m_winningSide + " wins.");
                     Debug.Log("Winning positions at: " + m_winningPositions[0] + " , " + m_winningPositions[1] + " , " + m_winningPositions[2]);
@@ -129,11 +132,11 @@ namespace TicTacToe.Client.Runtime
                 else if(m_gridModel.IsFull() == true)
                 {
                     Debug.Log("Board full.");
-                    SceneManager.LoadScene("WinPopup", LoadSceneMode.Additive);
+                    //SceneManager.LoadScene("WinPopup", LoadSceneMode.Additive);
                     m_winPopupPresenter.Show(new WinPopupModel(Side.None));
                     m_winPopupEffect.Play();
                     m_restartPresenter.Show();
-                    m_restartEffect.Play();
+                    m_restartAppearEffect.Play();
                 }
 
                 //switch active player
@@ -151,7 +154,7 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
-            SceneManager.UnloadSceneAsync("WinPopup");
+            //SceneManager.UnloadSceneAsync("WinPopup");
             m_restartModel.Restart();
         }
     }
