@@ -10,12 +10,13 @@ namespace TicTacToe.Client.Runtime
         [SerializeField] private CellPresenter[] m_presenters = default;
         [SerializeField] private Effect[] m_animators = default;
         [SerializeField] private Effect[] m_winAnimators = default;
-        [SerializeField] private Effect m_restartEffect = default;
-        [SerializeField] private RestartPresenter m_restartPresenter = default;
         [SerializeField] private ScorePresenter m_xScorePresenter = default;
         [SerializeField] private ScorePresenter m_oScorePresenter = default;
-        [SerializeField] private WinPopupPresenter m_winPopupPresenter = default;
-        [SerializeField] private WinPopupEffect m_winPopupEffect = default;
+
+        [Inject] private WinPopupPresenter m_winPopupPresenter;
+        [Inject] private WinPopupEffect m_winPopupEffect;
+        [Inject] private RestartPresenter m_restartPresenter;
+        [Inject] private RestartAppearEffect m_restartEffect;
 
         [Inject(Id = PlayerID.XPlayer)] private PlayerModel m_xPlayer;
         [Inject(Id = PlayerID.OPlayer)] private PlayerModel m_oPlayer;
