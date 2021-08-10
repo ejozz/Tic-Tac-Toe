@@ -153,6 +153,8 @@ namespace TicTacToe.Client.Runtime
         //On Restart event
         private void OnRestart()
         {
+            m_winPopupPresenter.Hide();
+            m_restartPresenter.Hide();
             m_restartModel.Restart();
         }
     }
