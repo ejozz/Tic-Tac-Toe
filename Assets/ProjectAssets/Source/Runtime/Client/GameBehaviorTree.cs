@@ -77,6 +77,11 @@ namespace TicTacToe.Client.Runtime
             m_restartPresenter.OnClicked -= OnRestart;
         }
 
+        private void Start()
+        {
+            SceneManager.UnloadSceneAsync("Win");
+        }
+
         //On Presenter Clicked event
         private void OnPresenterClicked(Vector2Int p)
         {     
@@ -91,12 +96,17 @@ namespace TicTacToe.Client.Runtime
                 //if there is a winner
                 if(m_winningPositions!=null)
                 {
+                    
+
                     m_winningSide = m_gridModel.CellModelArray[p.x, p.y].PlayerSide;
 
                     foreach(Vector2Int position in m_winningPositions)
                     {
                         m_winAnimatorGrid[position].Play();
                     }
+
+                    SceneManager.LoadScene("Win", LoadSceneMode.Additive);
+                    m_restartPresenter.Hide();
 
                     if(m_winningSide == Side.X)
                     {
@@ -120,6 +130,7 @@ namespace TicTacToe.Client.Runtime
                 //elif board is full
                 else if(m_gridModel.IsFull() == true)
                 {
+                    SceneManager.LoadScene("Win", LoadSceneMode.Additive);
                     Debug.Log("Board full.");
                     m_winPopupPresenter.Show(new WinPopupModel(Side.None));
                     m_winPopupEffect.Play();
